@@ -1,0 +1,1 @@
+bool isOneBit(int bits[], int size);

@@ -1,5 +1,7 @@
 set (CMAKE_CXX_STANDARD 11)
 
+cmake_minimum_required(VERSION 3.10)
+
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
@@ -38,3 +40,7 @@ target_link_libraries(sample1 gtest_main)
 add_test(NAME sample_test COMMAND sample1 --gtest_output=xml:output.xml)
 
 add_executable(hello app/hello.cpp)
+
+add_executable(oneBit app/1bit2bitChar/solution.cc app/1bit2bitChar/test.cc)
+target_link_libraries(oneBit gtest_main)
+add_test(NAME oneBit_test COMMAND oneBit --gtest_output=xml:output.xml)
