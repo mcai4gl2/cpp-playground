@@ -38,6 +38,8 @@ endif()
 
 enable_testing()
 
-add_executable(tests app/1bit2bitChar/solution.cc app/1bit2bitChar/test.cc app/sample1_unittest.cc app/sample1.cc)
+file(GLOB_RECURSE BIT_SOURCES "app/1bit2bitChar/*")
+
+add_executable(tests ${BIT_SOURCES} app/sample1_unittest.cc app/sample1.cc)
 target_link_libraries(tests gtest_main)
 add_test(NAME all_tests COMMAND tests --gtest_output=xml:output.xml)
