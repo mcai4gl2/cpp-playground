@@ -2,6 +2,8 @@ set (CMAKE_CXX_STANDARD 11)
 
 cmake_minimum_required(VERSION 3.10)
 
+set(CMAKE_CXX_FLAGS "-g -Wall")
+
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
@@ -34,13 +36,8 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
   include_directories("${gtest_SOURCE_DIR}/include")
 endif()
 
-# Now simply link against gtest or gtest_main as needed. Eg
-add_executable(sample1 app/sample1_unittest.cc app/sample1.cc)
-target_link_libraries(sample1 gtest_main)
-add_test(NAME sample_test COMMAND sample1 --gtest_output=xml:output.xml)
+enable_testing()
 
-add_executable(hello app/hello.cpp)
-
-add_executable(oneBit app/1bit2bitChar/solution.cc app/1bit2bitChar/test.cc)
-target_link_libraries(oneBit gtest_main)
-add_test(NAME oneBit_test COMMAND oneBit --gtest_output=xml:output.xml)
+add_executable(tests app/1bit2bitChar/solution.cc app/1bit2bitChar/test.cc app/sample1_unittest.cc app/sample1.cc)
+target_link_libraries(tests gtest_main)
+add_test(NAME all_tests COMMAND tests --gtest_output=xml:output.xml)
