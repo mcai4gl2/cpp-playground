@@ -27,3 +27,21 @@ Result findSum(const int inputs[], const int size, const int target) {
 
     return result;
 }
+
+Result findSum(const std::vector<int> inputs, const int target) {
+    Result result = {-1, -1};
+
+    for (int first = 0, second = inputs.size() - 1; first < second;) {
+        int value = inputs.at(first) + inputs.at(second);
+        if (value < target) {
+            first++;
+        } else if (value > target) {
+            second--;
+        } else if (value == target) {
+            result = {first, second};
+            return result;
+        }
+    }
+
+    return result;
+}

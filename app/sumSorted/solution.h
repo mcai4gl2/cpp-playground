@@ -12,6 +12,7 @@ Similar Problems: (M) Two Sum
 
 https://github.com/awangdev/LintCode/blob/master/Java/2%20Sum%20II%20-%20Input%20array%20is%20sorted.java
 */
+#include <vector>
 
 struct Result {
     int startIndex;
@@ -19,3 +20,5 @@ struct Result {
 };
 
 Result findSum(const int inputs[], const int size, const int target);
+
+Result findSum(const std::vector<int> inputs, const int target);
