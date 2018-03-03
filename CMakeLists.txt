@@ -40,6 +40,8 @@ enable_testing()
 
 file(GLOB_RECURSE BIT_SOURCES "app/1bit2bitChar/*")
 
-add_executable(tests ${BIT_SOURCES} app/sample1_unittest.cc app/sample1.cc)
+file(GLOB_RECURSE SUM_SOURCES "app/sumSorted/*")
+
+add_executable(tests ${BIT_SOURCES} ${SUM_SOURCES} app/sample1_unittest.cc app/sample1.cc)
 target_link_libraries(tests gtest_main)
 add_test(NAME all_tests COMMAND tests --gtest_output=xml:output.xml)
