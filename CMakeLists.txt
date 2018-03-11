@@ -44,6 +44,8 @@ file(GLOB_RECURSE SUM_SOURCES "app/sumSorted/*")
 
 file(GLOB_RECURSE A_PLUS_B_SOURCES "app/A+B/*")
 
-add_executable(tests ${BIT_SOURCES} ${SUM_SOURCES} ${A_PLUS_B_SOURCES})
+file(GLOB_RECURSE BEST_BUY_AND_SELL "app/bestBuyAndSell/*")
+
+add_executable(tests ${BIT_SOURCES} ${SUM_SOURCES} ${A_PLUS_B_SOURCES} ${BEST_BUY_AND_SELL})
 target_link_libraries(tests gtest_main)
 add_test(NAME all_tests COMMAND tests --gtest_output=xml:output.xml)
